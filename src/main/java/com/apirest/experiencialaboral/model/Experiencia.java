@@ -3,6 +3,7 @@ package com.apirest.experiencialaboral.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "expreriencia")
 public class Experiencia {
 
     @Id
