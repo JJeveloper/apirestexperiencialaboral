@@ -1,5 +1,6 @@
 package com.apirest.experiencialaboral.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,8 +17,9 @@ public class Experiencia {
 
     private  String funciones;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trabajador")
+    @ManyToOne
+    @JoinColumn(name = "id_trabajador")
+    @JsonIgnore
     private Trabajador trabajador;
 
     public Experiencia(){

@@ -3,7 +3,6 @@ package com.apirest.experiencialaboral.service;
 import com.apirest.experiencialaboral.model.Trabajador;
 import com.apirest.experiencialaboral.repository.TrabajadorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 

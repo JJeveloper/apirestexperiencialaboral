@@ -1,8 +1,10 @@
 package com.apirest.experiencialaboral.repository;
 
 
+import com.apirest.experiencialaboral.model.Experiencia;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ExperienciaRepository {
+public interface ExperienciaRepository extends JpaRepository<Experiencia, Integer> {
 }

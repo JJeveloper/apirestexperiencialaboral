@@ -1,7 +1,9 @@
 package com.apirest.experiencialaboral.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,19 +22,20 @@ public class Trabajador {
 
     private String telefono;
 
-    @OneToMany(mappedBy = "trabajador")
-    private List<Experiencia> experiencia;
+    @OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnore
+    private List<Experiencia> experienciaList = new ArrayList<>();
 
     public Trabajador() {
     }
 
-    public Trabajador(Integer id, String nombre, String apellidos, int nacimiento, String telefono, List<Experiencia> experiencia) {
+    public Trabajador(Integer id, String nombre, String apellidos, int nacimiento, String telefono, List<Experiencia> experienciaList) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.nacimiento = nacimiento;
         this.telefono = telefono;
-        this.experiencia = experiencia;
+        this.experienciaList = experienciaList;
     }
 
     public Trabajador(String nombre, String apellidos, int nacimiento, String telefono, List<Experiencia> experiencia) {
@@ -40,7 +43,7 @@ public class Trabajador {
         this.apellidos = apellidos;
         this.nacimiento = nacimiento;
         this.telefono = telefono;
-        this.experiencia = experiencia;
+        this.experienciaList = experiencia;
     }
 
     public Integer getId() {
@@ -84,10 +87,10 @@ public class Trabajador {
     }
 
     public List<Experiencia> getExperiencia() {
-        return experiencia;
+        return experienciaList;
     }
 
     public void setExperiencia(List<Experiencia> experiencia) {
-        this.experiencia = experiencia;
+        this.experienciaList = experiencia;
     }
 }
